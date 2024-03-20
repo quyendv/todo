@@ -125,7 +125,7 @@
                 <button type="button" onclick="modalclose()" class="modal-close-btn"></button>
             </div>
             <div class="darksoul-modal-content-main">
-                <form class="darksoul-form">
+                <form class="darksoul-form" onsubmit="event.preventDefault(); handleSubmit()">
                     <label>Platform</label>
                     <input id="platform" type="text" name="platform" value="" required/>
                     <label>Task</label>

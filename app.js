@@ -64,39 +64,39 @@ var todo_col = document.getElementById('todo-col');
 
 var id = 5;
 
-$('.darksoul-form').on('submit', function () {
-  var div = document.getElementById('div1');
-  var platform = document.getElementById('platform').value;
-  var task = document.getElementById('task').value;
-  var description = document.getElementById('description').value;
+// $('.darksoul-form').on('submit', function () {
+//   var div = document.getElementById('div1');
+//   var platform = document.getElementById('platform').value;
+//   var task = document.getElementById('task').value;
+//   var description = document.getElementById('description').value;
 
-  div.insertAdjacentHTML(
-    'beforeend',
-    '<div class="darksoul-gradient-card-' +
-      color +
-      '" id="' +
-      id +
-      '" draggable="true" ondragstart="drag(event)"><div class="card"><div class="header"><h5 class="' +
-      color +
-      '">' +
-      platform +
-      '</h5></div><div class="content"><h3>' +
-      task +
-      '</h3><p>' +
-      description +
-      '</p></div><div class="footer"><div class="date"><img width="25" height="25" src="https://img.icons8.com/sf-black-filled/64/' +
-      icon_color_code +
-      '/calendar-plus.png" alt="calendar-plus"/><p>' +
-      d.getDate() +
-      ' ' +
-      month[d.getMonth()] +
-      ' ' +
-      d.getUTCFullYear() +
-      '</p></div></div></div></div>',
-  );
-  id = id + 1;
-  return false;
-});
+//   div.insertAdjacentHTML(
+//     'beforeend',
+//     '<div class="darksoul-gradient-card-' +
+//       color +
+//       '" id="' +
+//       id +
+//       '" draggable="true" ondragstart="drag(event)"><div class="card"><div class="header"><h5 class="' +
+//       color +
+//       '">' +
+//       platform +
+//       '</h5></div><div class="content"><h3>' +
+//       task +
+//       '</h3><p>' +
+//       description +
+//       '</p></div><div class="footer"><div class="date"><img width="25" height="25" src="https://img.icons8.com/sf-black-filled/64/' +
+//       icon_color_code +
+//       '/calendar-plus.png" alt="calendar-plus"/><p>' +
+//       d.getDate() +
+//       ' ' +
+//       month[d.getMonth()] +
+//       ' ' +
+//       d.getUTCFullYear() +
+//       '</p></div></div></div></div>',
+//   );
+//   id = id + 1;
+//   return false;
+// });
 
 var toggle = document.getElementById('toggle');
 var bod = document.getElementById('bod');
@@ -218,5 +218,45 @@ function roll() {
     modal_content[0].style.color = 'white';
     setTimeout(toggled, 250);
     flag = 0;
+  }
+}
+
+// Addition
+function handleSubmit() {
+  var div = document.getElementById('div1');
+  var platform = document.getElementById('platform').value;
+  var task = document.getElementById('task').value;
+  var description = document.getElementById('description').value;
+
+  if (platform && task) {
+    // Kiểm tra xem platform và task có giá trị hay không
+    div.insertAdjacentHTML(
+      'beforeend',
+      '<div class="darksoul-gradient-card-' +
+        color +
+        '" id="' +
+        id +
+        '" draggable="true" ondragstart="drag(event)"><div class="card"><div class="header"><h5 class="' +
+        color +
+        '">' +
+        platform +
+        '</h5></div><div class="content"><h3>' +
+        task +
+        '</h3><p>' +
+        description +
+        '</p></div><div class="footer"><div class="date"><img width="25" height="25" src="https://img.icons8.com/sf-black-filled/64/' +
+        icon_color_code +
+        '/calendar-plus.png" alt="calendar-plus"/><p>' +
+        d.getDate() +
+        ' ' +
+        month[d.getMonth()] +
+        ' ' +
+        d.getUTCFullYear() +
+        '</p></div></div></div></div>',
+    );
+    id = id + 1;
+    modalclose(); // Đóng modal sau khi thêm task thành công
+  } else {
+    alert('Please enter Platform and Task'); // Hiển thị thông báo nếu thiếu thông tin
   }
 }
